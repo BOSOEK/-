@@ -7,19 +7,21 @@ from random import *
 
 class Company :
     name = ""
-    def __init__(self, name) :
-        self.name = name
     money = 1000
     upDown = 0
     upDownMoney = 0
-    mose = 0
+    buyCheck = 0
+    buyCompany = 0
+
+    def __init__(self, name) :
+        self.name = name
+    
     def change(self) :
-        self.upDown = randrange(-500, 501)
+        self.upDown = self.upDown + randrange(-500, 501)
         self.money = self.money + self.upDown
         self.upDownMoney = 1000 - self.money
         self.upDownMoney = self.upDownMoney * (-1)
-    buyCheck = 0
-    buyCompany = 0
+    
     def Buy(self, buyCompany) :
         self.buyCheck = self.upDown
         self.buyCompany = self.buyCompany + buyCompany
@@ -115,13 +117,37 @@ def Sell() :
         print(str(i+1) + " : " + companys[i].name)
     choose = input("판매할 회사를 입력하여 주세요(1~5) >> ")
     print()
+    global mymoney
     if choose == '1' :
         if companys[0].buyCompany == 0 :
             print("< 해당 회사의 주식이 없습니다 >")
         else :
-            global mymoney
-            mymoney = mymoney + int(companys[0].buyCompany + (companys[0].buyCheck - companys[0].upDown))
-            print(mymoney)
+            mymoney = mymoney + companys[0].buyCompany + (companys[0].buyCheck + companys[0].upDown)
+            print("< 총 " + str(companys[0].upDown) + " 만큼의 수익을 얻었습니다 >")
+    elif choose == '2' :
+        if companys[1].buyCompany == 0 :
+            print("< 해당 회사의 주식이 없습니다 >")
+        else :
+            mymoney = mymoney + companys[1].buyCompany + (companys[1].buyCheck + companys[1].upDown)
+            print("< 총 " + str(companys[1].upDown) + " 만큼의 수익을 얻었습니다 >")
+    elif choose == '3' :
+        if companys[2].buyCompany == 0 :
+            print("< 해당 회사의 주식이 없습니다 >")
+        else :
+            mymoney = mymoney + companys[2].buyCompany + (companys[2].buyCheck + companys[2].upDown)
+            print("< 총 " + str(companys[2].upDown) + " 만큼의 수익을 얻었습니다 >")
+    elif choose == '4' :
+        if companys[3].buyCompany == 0 :
+            print("< 해당 회사의 주식이 없습니다 >")
+        else :
+            mymoney = mymoney + companys[3].buyCompany + (companys[3].buyCheck + companys[3].upDown)
+            print("< 총 " + str(companys[3].upDown) + " 만큼의 수익을 얻었습니다 >")
+    elif choose == '5' :
+        if companys[4].buyCompany == 0 :
+            print("< 해당 회사의 주식이 없습니다 >")
+        else :
+            mymoney = mymoney + companys[4].buyCompany + (companys[4].buyCheck + companys[4].upDown)
+            print("< 총 " + str(companys[4].upDown) + " 만큼의 수익을 얻었습니다 >")
     else :
         print("< 존재하지 않는 회사입니다 >")
      
